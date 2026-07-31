@@ -1,5 +1,6 @@
 package com.gustavaom7.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
@@ -7,14 +8,16 @@ import java.util.List;
  * Model for Wikipedia Search API response
  * Represents the JSON structure returned by search endpoint
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SearchResponse {
 
     @SerializedName("batchcomplete")
-    private boolean batchComplete;
+    private Object batchComplete;
 
     @SerializedName("query")
     private Query query;
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Query {
         @SerializedName("search")
         private List<SearchResult> search;
@@ -28,6 +31,7 @@ public class SearchResponse {
         }
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class SearchResult {
         @SerializedName("ns")
         private int namespace;
@@ -69,10 +73,14 @@ public class SearchResponse {
         public int getWordCount() {
             return wordCount;
         }
+
+        public String getTimestamp() {
+            return timestamp;
+        }
     }
 
     public boolean isBatchComplete() {
-        return batchComplete;
+        return batchComplete != null;
     }
 
     public Query getQuery() {

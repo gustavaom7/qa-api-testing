@@ -34,7 +34,7 @@ class WikipediaSearchSecurityTests {
     })
     @DisplayName("API should safely handle injection attempts in search")
     @Description("Verify API escapes/handles malicious input without errors")
-    @Severity(SeverityLevel.HIGH)
+    @Severity(SeverityLevel.CRITICAL)
     void searchShouldHandleInjectionAttempts(String maliciousInput) {
         Response response = given()
                 .queryParam("action", "query")
@@ -61,7 +61,7 @@ class WikipediaSearchSecurityTests {
     @ParameterizedTest(name = "Large input: {0} chars")
     @ValueSource(ints = {100, 1000, 5000})
     @DisplayName("API should handle large input without buffer overflow")
-    @Severity(SeverityLevel.MEDIUM)
+    @Severity(SeverityLevel.NORMAL)
     void searchShouldHandleLargeInput(int inputLength) {
         String largeInput = "a".repeat(inputLength);
 
@@ -85,7 +85,7 @@ class WikipediaSearchSecurityTests {
     @ParameterizedTest(name = "Special chars: {0}")
     @ValueSource(strings = {"<>", "&&", "||", "%%", "$$", "@@", "##"})
     @DisplayName("API should handle special characters safely")
-    @Severity(SeverityLevel.MEDIUM)
+    @Severity(SeverityLevel.NORMAL)
     void searchShouldHandleSpecialCharacters(String specialChars) {
         Response response = given()
                 .queryParam("action", "query")
@@ -110,7 +110,7 @@ class WikipediaSearchSecurityTests {
             "%3E"  // >
     })
     @DisplayName("URL-encoded malicious input should be handled safely")
-    @Severity(SeverityLevel.MEDIUM)
+    @Severity(SeverityLevel.NORMAL)
     void searchShouldHandleEncodedMaliciousInput(String encodedInput) {
         // RestAssured automatically handles encoding, but let's verify it's safe
         Response response = given()

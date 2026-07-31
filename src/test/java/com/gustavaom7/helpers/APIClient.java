@@ -31,7 +31,7 @@ public class APIClient {
         RequestSpecBuilder builder = new RequestSpecBuilder()
                 .setBaseUri(baseURL)
                 .setContentType("application/json")
-                .addHeader("User-Agent", "QA-Automation-Suite/1.0");
+                .addHeader("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
 
         if (enableLogging) {
             builder.addFilter(new RequestLoggingFilter())

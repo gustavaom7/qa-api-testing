@@ -25,7 +25,7 @@ class WikipediaSearchContractTests {
     @Test
     @DisplayName("Search response should match contract schema")
     @Description("Validates that API response conforms to expected JSON schema")
-    @Severity(SeverityLevel.CRITICAL)
+    @Severity(SeverityLevel.BLOCKER)
     void searchResponseShouldMatchContract() {
         given()
                 .queryParam("action", "query")
@@ -43,7 +43,7 @@ class WikipediaSearchContractTests {
     @Test
     @DisplayName("All search results should have required fields")
     @Description("Contract test: Verify each search result contains mandatory fields")
-    @Severity(SeverityLevel.HIGH)
+    @Severity(SeverityLevel.CRITICAL)
     void searchResultsShouldContainRequiredFields() {
         Response response = given()
                 .queryParam("action", "query")
@@ -73,7 +73,7 @@ class WikipediaSearchContractTests {
 
     @Test
     @DisplayName("Response should have correct content type")
-    @Severity(SeverityLevel.MEDIUM)
+    @Severity(SeverityLevel.NORMAL)
     void responseShouldHaveCorrectContentType() {
         given()
                 .queryParam("action", "query")
@@ -90,7 +90,7 @@ class WikipediaSearchContractTests {
     @Test
     @DisplayName("Numeric fields should be numbers, not strings")
     @Description("Verify type consistency in contract")
-    @Severity(SeverityLevel.HIGH)
+    @Severity(SeverityLevel.CRITICAL)
     void numericFieldsShouldHaveCorrectType() {
         Response response = given()
                 .queryParam("action", "query")

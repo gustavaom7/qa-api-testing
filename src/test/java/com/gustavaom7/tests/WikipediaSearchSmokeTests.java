@@ -32,7 +32,7 @@ class WikipediaSearchSmokeTests {
     @Test
     @DisplayName("Search for 'Java' should return results with valid structure")
     @Description("Verify that searching for a common term returns properly formatted results")
-    @Severity(SeverityLevel.CRITICAL)
+    @Severity(SeverityLevel.BLOCKER)
     void searchForJavaShouldReturnValidResults() {
         Response response = given()
                 .queryParam("action", "query")
@@ -64,7 +64,7 @@ class WikipediaSearchSmokeTests {
     @ValueSource(strings = {"Python", "Database", "API", "Testing"})
     @DisplayName("Search for various terms should all return results")
     @Description("Verify API works consistently across different search queries")
-    @Severity(SeverityLevel.HIGH)
+    @Severity(SeverityLevel.CRITICAL)
     void multipleSearchTermsShouldReturnResults(String searchTerm) {
         Response response = given()
                 .queryParam("action", "query")
@@ -88,7 +88,7 @@ class WikipediaSearchSmokeTests {
 
     @Test
     @DisplayName("Search result has consistent timestamp format")
-    @Severity(SeverityLevel.MEDIUM)
+    @Severity(SeverityLevel.NORMAL)
     void searchResultsHaveValidTimestamps() {
         Response response = given()
                 .queryParam("action", "query")
@@ -106,14 +106,14 @@ class WikipediaSearchSmokeTests {
         SearchResponse.SearchResult firstResult = searchResponse.getSearchResults().get(0);
 
         // Verify timestamp follows ISO 8601 format
-        assertThat(firstResult.timestamp)
+        assertThat(firstResult.getTimestamp())
                 .as("Timestamp should follow ISO 8601 format")
                 .matches("\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z");
     }
 
     @Test
     @DisplayName("Empty search should return empty results, not error")
-    @Severity(SeverityLevel.MEDIUM)
+    @Severity(SeverityLevel.NORMAL)
     void emptySearchShouldReturnEmptyResults() {
         Response response = given()
                 .queryParam("action", "query")
@@ -133,7 +133,7 @@ class WikipediaSearchSmokeTests {
 
     @Test
     @DisplayName("Response time should be under 3 seconds")
-    @Severity(SeverityLevel.MEDIUM)
+    @Severity(SeverityLevel.NORMAL)
     void responseTimeShouldBeAcceptable() {
         given()
                 .queryParam("action", "query")
