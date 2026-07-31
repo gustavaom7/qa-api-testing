@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.11.0'
+}
+
+group = 'com.gustavaom7'
+version = '1.0.0'
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+def restAssuredVersion = '5.3.2'
+def junitVersion = '5.9.3'
+def allureVersion = '2.21.0'
+
+dependencies {
+    // REST Assured - API Testing
+    testImplementation "io.rest-assured:rest-assured:${restAssuredVersion}"
+    testImplementation "io.rest-assured:json-schema-validator:${restAssuredVersion}"
+
+    // JUnit 5
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+
+    // Allure
+    testImplementation "io.qameta.allure:allure-junit5:${allureVersion}"
+    testImplementation "io.qameta.allure:allure-rest-assured:${allureVersion}"
+
+    // JSON Processing
+    testImplementation 'com.google.code.gson:gson:2.10.1'
+
+    // Assertions
+    testImplementation 'org.assertj:assertj-core:3.24.1'
+
+    // Logging
+    testImplementation 'org.slf4j:slf4j-api:2.0.9'
+    testImplementation 'ch.qos.logback:logback-classic:1.4.11'
+
+    // Data Faker
+    testImplementation 'com.github.javafaker:javafaker:1.0.2'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+
+    systemProperties = [
+        'allure.results.directory': 'build/allure-results'
+    ]
+}
+
+allure {
+    version = "${allureVersion}"
+}
