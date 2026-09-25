@@ -1,5 +1,7 @@
 # QA API Automation — RestAssured + JUnit5 + Allure
 
+![API Tests](https://github.com/gustavaom7/qa-api-testing/actions/workflows/api-tests.yml/badge.svg)
+
 A professional-grade **API automation testing framework** built with RestAssured, JUnit5, and Allure Reports. This repository demonstrates contract testing, security testing, and automated CI/CD reporting for REST APIs.
 
 > **Portfolio Project**: Built to showcase best practices in API automation testing alongside mobile (Maestro) and E2E (Cypress/Playwright) testing suites.
@@ -11,8 +13,7 @@ A professional-grade **API automation testing framework** built with RestAssured
 | REST API testing at scale | RestAssured + parameterized tests | ✅ |
 | Contract testing | JSON Schema validation | ✅ |
 | Security testing (basics) | Injection, buffer overflow tests | ✅ |
-| Detailed reporting | Allure Reports with trends | ✅ |
-| CI/CD automation | GitHub Actions daily + PR runs | ✅ |
+| CI/CD automation | GitHub Actions on PR + manual trigger (daily/push cron disabled to control Actions minutes) | ✅ |
 | Slack notifications | Pass/fail alerts to team | ✅ |
 | Type-safe models | Gson-based POJOs for responses | ✅ |
 | Best practices | Builder pattern, logging, custom assertions | ✅ |
