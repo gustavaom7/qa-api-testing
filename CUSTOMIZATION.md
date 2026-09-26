@@ -279,7 +279,7 @@ git push -u origin main
 
 Link in main `README.md`:
 ```markdown
-- [API Testing Suite](https://github.com/gustavaom7/qa-api-testing) — RestAssured, Contract Testing, Security Tests
+- [API Testing Suite](https://github.com/gustavaom7/api-testing-restassured) — RestAssured, Contract Testing, Security Tests
 ```
 
 ## Testing Your Customization

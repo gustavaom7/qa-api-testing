@@ -12,7 +12,7 @@ Get up and running with the QA API Testing suite in 5 minutes.
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/gustavaom7/qa-api-testing.git
+git clone https://github.com/gustavaom7/api-testing-restassured.git
 cd qa-api-testing
 ```
 
