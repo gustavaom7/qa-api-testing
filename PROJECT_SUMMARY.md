@@ -102,7 +102,7 @@ qa-api-testing/
 ### Quick Start
 ```bash
 # Clone
-git clone https://github.com/gustavaom7/qa-api-testing.git
+git clone https://github.com/gustavaom7/api-testing-restassured.git
 cd qa-api-testing
 
 # Run tests
